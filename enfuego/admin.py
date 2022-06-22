@@ -20,7 +20,7 @@ class FixturesAdmin(admin.ModelAdmin):
     list_display = ['matchnumber', 'teama', 'teamb', 'scorea', 'scoreb', 'date', 'finished']
 
 class PointTableAdmin(admin.ModelAdmin):
-    list_display = ['team', 'gamesplayed', 'gameswon', 'gamesdraw', 'gameslost', 'goaldifference', 'points']
+    list_display = ['team', 'gamesplayed', 'gameswon', 'gamesdraw', 'gameslost', 'goalsscored', 'goalsconceded', 'goaldifference', 'points']
 
 class GuideLinesAdmin(admin.ModelAdmin):
     list_display = ['rule']

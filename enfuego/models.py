@@ -1,5 +1,28 @@
 from django.db import models
 
+
+def database_initialization():
+
+    teams = ["CSA", "CSB", "EB", "ECA", "ECB", "EEE", "MECH"]
+
+    if not Teams.objects.all():
+
+        for i in teams:
+            t = Teams(team=i)
+            t.save()
+            p = PointTable(
+                team=Teams.objects.get(team=i), 
+                gamesplayed=0,
+                gameswon=0,
+                gamesdraw=0,
+                gameslost=0,
+                goalsscored=0,
+                goalsconceded=0,
+                goaldifference=0,
+                points=0
+            )
+            p.save()
+
 # Create your models here.
 
 
