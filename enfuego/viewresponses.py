@@ -33,4 +33,10 @@ def complete_fixtures_response():
 def goal_scorers_response():
     data = list(models.Players.objects.filter(goalsscored__gt=0).values('name', 'team_id', 'goalsscored'))
     return data
+
+
+# guidelines result
+def guideline_reponse():
+    data = list(models.GuideLines.objects.all().values('rule'))
+    return data
     

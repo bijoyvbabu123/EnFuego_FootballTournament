@@ -44,12 +44,17 @@ def goal_scorers_view(request):
 
     data = viewresponses.goal_scorers_response()
     """returns array of objects with keys {name, team_id, goalsscored}"""
-    
+
     # return HttpResponse("this is goal scorers view")
     return JsonResponse(data, safe=False)
 
 
 # this view is for the guidelines
 def guidelines_view(request):
-    return HttpResponse("this is guideline view")
+
+    data = viewresponses.guideline_reponse()
+    """returns array of objects with keys {rule}"""
+    
+    # return HttpResponse("this is guideline view")
+    return JsonResponse(data, safe=False)
 
