@@ -48,7 +48,7 @@ class Players(models.Model):
     # playertag
 
     def __str__(self):
-        return str(self.team + "-" + self.name)
+        return str(str(self.team) + "-" + str(self.name))
 
 
 # model for all fixtures
