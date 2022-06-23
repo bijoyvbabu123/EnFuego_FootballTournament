@@ -36,7 +36,17 @@ def complete_fixtures_view(request):
 
 # this view is for the specific team fixtures
 def specific_fixtures_view(request):
-    return HttpResponse("this is specific team fixtures view")
+
+    t = request.GET.get('team')
+
+    data = viewresponses.specific_fixtures_response(t)
+    """This returns array of objects with keys {matchnumber, teama_id, teamb_id,
+    scorea, scoreb, date, finished}"""
+
+    # return HttpResponse("this is specific team fixtures view")
+
+    return JsonResponse(data, safe=False)
+
 
 
 # this view is for the table of goal scorers 
@@ -54,7 +64,7 @@ def guidelines_view(request):
 
     data = viewresponses.guideline_reponse()
     """returns array of objects with keys {rule}"""
-    
+
     # return HttpResponse("this is guideline view")
     return JsonResponse(data, safe=False)
 

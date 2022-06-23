@@ -40,3 +40,15 @@ def guideline_reponse():
     data = list(models.GuideLines.objects.all().values('rule'))
     return data
     
+
+# result for specific team fixtures
+def specific_fixtures_response(t):
+    team = models.Teams.objects.get(team=t)
+    # data = list(models.Teams..all().values('matchnumber', 'teama_id', 'teamb_id', 'scorea', 'scoreb', 'date', 'finished'))
+    # data = team.fixtures_set.all().values('matchnumber', 'teama_id', 'teamb_id', 'scorea', 'scoreb', 'date', 'finished')
+    # data = list(models.Fixtures.objects.filter(Q(teama__exact=team)|(teamb__exact=team)).values('matchnumber', 'teama_id', 'teamb_id', 'scorea', 'scoreb', 'date', 'finished'))
+    d1 = models.Fixtures.objects.filter(teama=team)
+    d2 = models.Fixtures.objects.filter(teamb=team)
+    d12 = d1 | d2
+    data = list(d12.order_by('matchnumber').values('matchnumber', 'teama_id', 'teamb_id', 'scorea', 'scoreb', 'date', 'finished'))
+    return data
