@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  enfuego_backend_service:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/django_app
+    ports:
+      - 8000:8000
+    environment:
+      - PG_DB_NAME=postgres
+      - PG_USER_NAME=postgres
+      - PG_USER_PASSWORD=postgres
+      - PG_HOST=database_service
+      - PG_PORT=5432
+      - VIRTUAL_HOST=samplebackendenfuego.shamla.com
+    image: enfuego_backend_service:version2
+    container_name: enfuego_backend_container
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - database_service
+  
+  database_service:
+    image: postgres:latest
+    container_name: postgres_enfuego_container
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust  # trusts anyone to use the database. thus volume mounting is not an issue
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+networks:
+  default:
+    name: nginx-proxy-network
