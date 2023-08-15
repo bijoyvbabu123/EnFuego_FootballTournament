@@ -1,6 +1,7 @@
 FROM python:3.8-slim-buster
 
 ENV PYTHONBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
 # Set the working directory to /app
 WORKDIR /django_app
