@@ -32,7 +32,7 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_HOST_AUTH_METHOD=trust  # trusts anyone to use the database. thus volume mounting is not an issue
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - enfuego_postgres_data:/var/lib/postgresql/data
 
 networks:
   default:
