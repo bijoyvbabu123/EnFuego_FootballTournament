@@ -37,3 +37,6 @@ services:
 networks:
   default:
     name: nginx-proxy-network
+  
+volumes:
+  enfuego_postgres_data:
