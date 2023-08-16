@@ -36,3 +36,6 @@ services:
 networks:
   default:
     name: nginx-proxy-network
+
+volumes:
+  postgres_data:
